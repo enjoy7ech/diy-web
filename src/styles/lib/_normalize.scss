@@ -1,0 +1,14 @@
+//全局样式
+a {
+  color: #0fbbe9;
+  background-color: transparent;
+  text-decoration: none;
+  outline: 0 !important;
+  transition: all .15s linear, color .15s linear;
+  cursor: pointer;
+
+  &:hover {
+    color: #2f76e2;
+    text-decoration: none;
+  }
+}

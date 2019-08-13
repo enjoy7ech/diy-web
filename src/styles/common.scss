@@ -1,0 +1,71 @@
+@import './variables';
+@import './lib/_margin.scss';
+@import './lib/_padding.scss';
+@import './lib/_display.scss';
+@import './lib/_normalize.scss';
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.col-xs-label {
+  padding-left: 15px;
+  float: left;
+  width: 85px;
+}
+
+.label-for-input {
+  line-height: 40px;
+}
+
+.title-section {
+  font-weight: 700;
+  border-left: 6px solid $color-primary;
+  padding-left: 8px;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.validate-error {
+  color: $color-danger;
+
+  input {
+    border: 1px solid $color-danger;
+
+    &:focus {
+      border-color: $color-danger;
+      outline: 0;
+    }
+  }
+}
+
+.search-input {
+  max-width: 200px;
+}
+
+.table {
+  .mini-btn {
+    padding: 3px 8px;
+    font-size: 12px;
+  }
+
+  thead {
+    tr {
+      th {
+        font-weight: 800;
+        background-color: #eeeeee;
+        border-bottom: none;
+      }
+    }
+  }
+}

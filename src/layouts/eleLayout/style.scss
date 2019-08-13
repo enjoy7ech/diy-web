@@ -1,0 +1,119 @@
+.app-contaniar {
+  height: 100%;
+
+  .header-container {
+    box-shadow: 0 -15px 31px #888888;
+  }
+
+  .modal-cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: RGB(0, 0, 0, 0.4);
+    z-index: 997;
+  }
+
+  .side-modal {
+    position: absolute;
+    top: 0;
+    // right: -350px;
+    background-color: #ffffff;
+    box-shadow: 16px 0 60px #888888;
+    height: 100%;
+    width: 350px;
+    z-index: 998;
+
+    .footer-img {
+      position: absolute;
+      bottom: 0;
+      width: 200px;
+      display: inline-block;
+    }
+
+    .footer-text {
+      position: absolute;
+      bottom: 41px;
+      right: 34px;
+      width: 113px;
+      display: inline-block;
+      transform: rotate(-22deg);
+    }
+
+    .title {
+      i {
+        font-size: 16px;
+      }
+
+      span {
+        font-weight: bold;
+      }
+    }
+
+    .toggle {
+      position: absolute;
+      right: 0;
+      margin-top: -24px;
+      width: 80px;
+    }
+  }
+}
+
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.slideLeft {
+  right: 0px;
+  -webkit-animation: slideLeft;
+  animation: slideLeft 1s;
+}
+
+@-webkit-keyframes slideLeft {
+  0% {
+    right: -410px;
+  }
+
+  100% {
+    right: 0px;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    right: -410px;
+  }
+
+  100% {
+    right: 0px;
+  }
+}
+
+.slideLeftReturn {
+  right: -410px;
+  -webkit-animation: slideLeftReturn;
+  animation: slideLeftReturn 1s;
+}
+
+@-webkit-keyframes slideLeftReturn {
+  0% {
+    right: 0px;
+  }
+
+  100% {
+    right: -410px;
+  }
+}
+
+@keyframes slideLeftReturn {
+  0% {
+    right: 0px;
+  }
+
+  100% {
+    right: -410px;
+  }
+}
