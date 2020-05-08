@@ -11,7 +11,7 @@ module.exports = {
   build: {
     webpackContextPath: path.resolve('./src'),
     index: path.resolve(__dirname, '../../dist/public/index.html'),
-    productionSourceMap: true,
+    productionSourceMap: false,
     assetsRoot: path.resolve(__dirname, '../../dist/public'),
     assetsPublicPath: '/',
     assetsSubDirectory: 'static',

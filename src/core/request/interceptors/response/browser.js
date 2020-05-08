@@ -7,9 +7,11 @@ export default [
       // needLogin
       window.AppRuntimeContext.instance.$notify.error({
         title: '错误',
-        message: '请先登录'
+        message: '请先登录',
+        onClose: () => {
+          window.AppRuntimeContext.instance.$router.push('/home')
+        }
       })
-      window.location.href = '/'
     } else if (error.response.data.status && error.response.data.status === 402) {
       // needLogin
       window.AppRuntimeContext.instance.$notify.error({

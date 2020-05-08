@@ -6,26 +6,14 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./client.base.js')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   entry: {
     app: './client.js'
   },
-  module: {
-  },
+  module: {},
   plugins: [
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: config.build.productionSourceMap,
-      parallel: true
-    }),
     new HtmlWebpackPlugin({
       filename: config.build.index,
       template: './index.html',
@@ -48,11 +36,13 @@ const webpackConfig = merge(baseWebpackConfig, {
       jQuery: 'jquery'
     }),
     // copy custom static assets
-    new copyWebpackPlugin([{
-      from: path.join(__dirname, '../../public/**/*'),
-      to: path.join(__dirname, '../../dist/public'),
-      force: true
-    }])
+    new copyWebpackPlugin([
+      {
+        from: path.join(__dirname, '../../public/**/*'),
+        to: path.join(__dirname, '../../dist/public'),
+        force: true
+      }
+    ])
   ],
   optimization: {
     splitChunks: {
@@ -89,11 +79,7 @@ if (config.build.productionGzip) {
     new CompressionWebpackPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
-      test: new RegExp(
-        '\\.(' +
-        config.build.productionGzipExtensions.join('|') +
-        ')$'
-      ),
+      test: new RegExp('\\.(' + config.build.productionGzipExtensions.join('|') + ')$'),
       threshold: 10240,
       minRatio: 0.8
     })

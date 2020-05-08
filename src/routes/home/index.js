@@ -1,8 +1,7 @@
 // import defaultLayout from '../../layouts/eleLayout'
 
 export default {
-  path: '/',
+  path: '/home',
   component: () => import('./parallax'),
   meta: { pageTitle: '', pageSubTitle: '' }
-
 }

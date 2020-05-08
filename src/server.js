@@ -1,11 +1,11 @@
 import express from 'express'
 import portSetting from '../port-settings.js'
-import bodyParser from 'body-parser'
 import http from 'http'
 import path from 'path'
 import fs from 'fs'
 import errHandler from './error-handler'
-import session from 'express-session'
+import bodyParser from 'body-parser'
+// import session from 'express-session'
 
 let app = new express()
 app.set('view engine', 'html')
@@ -13,33 +13,42 @@ app.set('view engine', 'html')
 
 app.set('trust proxy', 1) // trust first proxy
 
-var redis = require('redis')
-let redisClient = redis.createClient('6379', '127.0.0.1')
-var RedisStore = require('connect-redis')(session)
-app.use(session({
-  secret: 'zhenxiang property',
-  store: new RedisStore({
-    client: redisClient,
-    ttl: 60 * 60 * 24 * 7 // 7 days
-  }),
-  resave: false,
-  saveUninitialized: true
-}))
+// session-redis
+// var redis = require('redis')
+// let redisClient = redis.createClient('6379', '127.0.0.1')
+// var RedisStore = require('connect-redis')(session)
+// app.use(session({
+//   secret: 'zhenxiang property',
+//   store: new RedisStore({
+//     client: redisClient,
+//     ttl: 60 * 60 * 24 * 7 // 7 days
+//   }),
+//   resave: false,
+//   saveUninitialized: true
+// }))
 
 // body-parse
-app.use(bodyParser.json({
-  limit: '50000kb'
-}))
-app.use(bodyParser.raw({
-  limit: '50000kb'
-}))
-app.use(bodyParser.urlencoded({
-  extended: false,
-  limit: '50000kb'
-}))
-app.use(bodyParser.text({
-  type: 'text/xml'
-}))
+app.use(
+  bodyParser.json({
+    limit: '50000kb'
+  })
+)
+app.use(
+  bodyParser.raw({
+    limit: '50000kb'
+  })
+)
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+    limit: '50000kb'
+  })
+)
+app.use(
+  bodyParser.text({
+    type: 'text/xml'
+  })
+)
 
 // 导入路由
 require('./route-api')(app)
@@ -73,7 +82,7 @@ let server = http.createServer(app)
 // require('./socketServer/server2')(server)
 
 let port = portSetting.backend || '8000'
-server.listen(port, function (err) {
+server.listen(port, function(err) {
   if (err) {
     throw err
   }
