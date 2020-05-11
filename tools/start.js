@@ -11,7 +11,7 @@ import config from './config'
 import webpackServerConfig from './webpack/server.dev'
 // import { resolve } from 'path'
 
-async function start () {
+async function start() {
   const serverCompiler = webpack(webpackServerConfig)
 
   const compiler = webpack(webpackClientConfig)
@@ -53,7 +53,7 @@ async function start () {
     startServer()
     let bs = browserSync.create()
     bs.init({
-      port: '1000',
+      port: '9000',
       proxy: {
         target: `0.0.0.0:8000`,
         middleware: [

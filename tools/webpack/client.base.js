@@ -7,7 +7,7 @@ const utils = require('./utils')
 const config = require('../config')
 // const vueLoaderConfig = require('./vue-loader.config')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '../..', dir)
 }
 
@@ -17,14 +17,12 @@ module.exports = {
     path: config.build.assetsRoot,
     filename: '[name].[hash:8].js',
     chunkFilename: '[name].bundle.js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.esm.js',
       '@': resolve('src')
     }
   },
@@ -34,7 +32,7 @@ module.exports = {
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   plugins: [
     new webpack.DefinePlugin({
-      '__ENV__': JSON.stringify(process.env.NODE_ENV)
+      __ENV__: JSON.stringify(process.env.NODE_ENV)
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -44,7 +42,7 @@ module.exports = {
     })
   ],
   module: {
-    noParse: function (content) {
+    noParse: function(content) {
       return /jquery|lodash/.test(content)
     },
     rules: [
@@ -68,16 +66,23 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          process.env.NODE_ENV !== 'production' ? 'style-loader'
-            : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
+          process.env.NODE_ENV !== 'production' ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
               config: {
                 path: './tools/postcss.config.js'
-              }
+              },
+              plugins: loader => [
+                require('postcss-url')(),
+                // require('postcss-import')(),
+                require('cssnano')(),
+                require('postcss-pxtorem')
+              ]
             }
-          }
+          },
+          'sass-loader'
         ]
       },
       {

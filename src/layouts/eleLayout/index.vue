@@ -19,19 +19,21 @@
         </el-footer>-->
       </el-container>
     </el-container>
-    <div class="modal-cover" @click="showMyInfo=false" v-show="showMyInfo"></div>
-    <div class="side-modal" ref="sideCover" style="display:none" :class="{'slideLeft':showMyInfo,'slideLeftReturn':!showMyInfo}">
+    <div class="modal-cover" @click="showMyInfo = false" v-show="showMyInfo"></div>
+    <div
+      class="side-modal"
+      ref="sideCover"
+      style="display:none"
+      :class="{ slideLeft: showMyInfo, slideLeftReturn: !showMyInfo }"
+    >
       <div style="position: relative;height: 100%;">
-        <img class="footer-img" src="/images/user-1.png" alt>
-        <img class="footer-text" src="/images/user-2.png" alt>
         <div class="col-xs-12 margin-t-15x">
           <div class="title">
             <i class="fa fa-user-circle"></i>
             <span class="margin-l-15x">用户信息</span>
           </div>
-          <img class="toggle" @click="close" src="/images/toggle.png" alt>
         </div>
-        <div class="col-xs-12 margin-t-15x">用户名:{{userInfo.userName}}</div>
+        <div class="col-xs-12 margin-t-15x">用户名:{{ userInfo.userName }}</div>
 
         <!-- <div class="col-xs-12 margin-t-15x">
           <div class="title">

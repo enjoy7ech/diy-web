@@ -41,6 +41,11 @@ const webpackConfig = merge(baseWebpackConfig, {
         from: path.join(__dirname, '../../public/**/*'),
         to: path.join(__dirname, '../../dist/public'),
         force: true
+      },
+      {
+        from: path.join(__dirname, '../../package.json'),
+        to: path.join(__dirname, '../../dist'),
+        force: true
       }
     ])
   ],

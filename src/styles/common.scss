@@ -1,8 +1,19 @@
-@import './variables';
+@import './_variables.scss';
 @import './lib/_margin.scss';
 @import './lib/_padding.scss';
 @import './lib/_display.scss';
 @import './lib/_normalize.scss';
+
+html,
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
 .text-center {
   text-align: center;

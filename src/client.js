@@ -3,7 +3,6 @@ import App from './App'
 import router from './router'
 import store from './store'
 
-import 'bootstrap-sass'
 import './styles/main.scss'
 import './components'
 import 'jquery'

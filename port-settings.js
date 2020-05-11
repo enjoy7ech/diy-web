@@ -1,4 +1,4 @@
 export default {
-  front: '1000',
+  front: '9000',
   backend: '8000'
 }

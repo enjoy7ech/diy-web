@@ -1,6 +1,6 @@
 import defaultLayout from '../../layouts/eleLayout'
 export default {
-  path: '/example',
+  path: '/',
   component: defaultLayout,
   meta: { pageTitle: '使用例子', pageSubTitle: '' },
   children: [
