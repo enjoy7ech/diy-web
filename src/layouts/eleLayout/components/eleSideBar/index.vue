@@ -7,10 +7,11 @@
       active-text-color="#ffd04b"
       style="height:100%"
       :collapse="isCollapse"
+      ref="menu"
     >
       <el-menu-item :index="'title'">
-        <div class="icon-fix">
-          <span>ClearVision</span>
+        <div class="icon-fix text-center">
+          <span class="menu-title">ClearVision</span>
         </div>
       </el-menu-item>
       <template v-for="(item, index) in menus">
@@ -18,26 +19,26 @@
         <el-menu-item
           v-if="!item.children || !item.children.length"
           :key="index"
-          :index="index.toString()"
+          :index="item.path"
           @click="selectMenu(item)"
         >
-          <div class="icon-fix d-flex align-items-center">
-            <i :class="[item.icon, 'col-1']" />
-            <span class="col-9">{{ item.name }}</span>
+          <div class="icon-fix text-center">
+            <i :class="item.icon" />
+            <span class="margin-l-10x">{{ item.name }}</span>
           </div>
         </el-menu-item>
         <!-- 有子nav -->
-        <el-submenu :key="index" :index="index.toString() + 1" v-else>
+        <el-submenu :key="index" :index="item.path" v-else>
           <template slot="title">
-            <div class="icon-fix">
+            <div class="icon-fix text-center">
               <i :class="item.icon" />
-              <span>{{ item.name }}</span>
+              <span class="margin-l-5x">{{ item.name }}</span>
             </div>
           </template>
           <el-menu-item
             v-for="(sItem, sIndex) in item.children"
             :key="sIndex"
-            :index="`${index}-${sIndex}`"
+            :index="item.path"
             @click="selectMenu(sItem)"
           >
             {{ sItem.name }}
@@ -61,6 +62,11 @@
   position: absolute;
   bottom: 10px;
   right: 20px;
+}
+
+.menu-title {
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .icon-fix {

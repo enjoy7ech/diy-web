@@ -20,30 +20,6 @@
         </el-footer>-->
       </el-container>
     </el-container>
-    <div class="modal-cover" @click="showMyInfo = false" v-show="showMyInfo" />
-    <div
-      ref="sideCover"
-      class="side-modal"
-      style="display:none"
-      :class="{ slideLeft: showMyInfo, slideLeftReturn: !showMyInfo }"
-    >
-      <div style="position: relative;height: 100%;">
-        <div class="col-xs-12 margin-t-15x">
-          <div class="title">
-            <i class="fa fa-user-circle" />
-            <span class="margin-l-15x">用户信息</span>
-          </div>
-        </div>
-        <div class="col-xs-12 margin-t-15x">用户名:{{ userInfo.userName }}</div>
-
-        <!-- <div class="col-xs-12 margin-t-15x">
-          <div class="title">
-            <i class="fa fa-lock" style="width:16px"></i>
-            <span class="margin-l-15x">修改密码</span>
-          </div>
-        </div>-->
-      </div>
-    </div>
   </div>
 </template>
 

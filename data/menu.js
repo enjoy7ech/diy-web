@@ -1,17 +1,17 @@
 let menus = [
   {
     name: '仪表面板',
-    path: 'dashboard',
+    path: '/dashboard',
     icon: 'fa fa-area-chart'
   },
   {
     name: '任务管理',
-    path: 'task-manage',
+    path: '/task-manage',
     icon: 'fa fa-recycle'
   },
   {
     name: '资产列表',
-    path: 'property-list',
+    path: '/property-list',
     icon: 'fa fa-database'
   }
   // {
