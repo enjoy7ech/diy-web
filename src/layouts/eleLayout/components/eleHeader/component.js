@@ -5,14 +5,14 @@ export default {
     isCollapse: '',
     data: {}
   },
-  data () {
+  data() {
     return {
       pageTitle: this.$route.meta.pageTitle,
       pageSubTitle: this.$route.meta.pageSubTitle
     }
   },
   watch: {
-    $route (from, to) {
+    $route(from, to) {
       if (from !== to) {
         this.pageTitle = this.$route.meta.pageTitle
         this.pageSubTitle = this.$route.meta.pageSubTitle
@@ -20,17 +20,15 @@ export default {
     }
   },
   methods: {
-    toggle () {
+    toggle() {
       bus.$emit('toggle')
     },
-    showMyInfo () {
+    showMyInfo() {
       bus.$emit('showMyInfo')
     },
-    handleCommand (command) {
+    handleCommand(command) {
       command.func()
     },
-    loginOut () {
-
-    }
+    loginOut() {}
   }
 }

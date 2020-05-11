@@ -1,5 +1,5 @@
 .inline {
-  display: inline
+  display: inline;
 }
 
 .inline-block {
@@ -7,9 +7,15 @@
 }
 
 .flex {
-  display: flex
+  display: flex;
 }
 
 .block {
   display: block;
+}
+
+@each $ta in left, right, center {
+  .text-#{$ta} {
+    text-align: #{$ta};
+  }
 }

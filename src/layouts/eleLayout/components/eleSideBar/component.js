@@ -5,9 +5,8 @@ export default {
     isCollapse: '',
     menus: ''
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   // watch: {
   //   menus () {
@@ -17,7 +16,7 @@ export default {
   //   }
   // },
   methods: {
-    selectMenu (item) {
+    selectMenu(item) {
       this.$router.push({ path: item.path })
     }
   }

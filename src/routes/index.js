@@ -1,11 +1,8 @@
-import example from './example/index'
+import dashboard from './dashboard'
+import taskManage from './task-manage'
+import propertyList from './property-list'
+// import example from './example'
 
-const routes = [
-  example,
-  {
-    path: '/background-css',
-    component: () => import('./background-css/index.vue'),
-    meta: { pageTitle: '', pageSubTitle: '' }
-  }
-]
+const routes = [dashboard, taskManage, propertyList]
+
 export default routes

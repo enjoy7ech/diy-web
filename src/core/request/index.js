@@ -11,12 +11,12 @@ const setupIntercepors = axios => {
   axios.interceptors.response.use(responseResolve, responseReject)
 }
 
-let createRequest = req => { }
+let createRequest = () => {}
 let apiRoot = `${window.location.protocol}//${window.location.host}`
-createRequest = req => {
+createRequest = () => {
   const clientRequest = axios.create({
     baseURL: apiRoot,
-    paramsSerializer: function (params) {
+    paramsSerializer: function(params) {
       return qs.stringify(params)
     }
   })

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-carousel indicator-position="none" type="card" height='60px'>
+    <el-carousel indicator-position="none" type="card" height="60px">
       <el-carousel-item v-for="item in imgSrc" :key="item">
         <div class="text-center">
           <img class="ad-container" :src="item" />

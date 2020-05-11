@@ -6,8 +6,10 @@ import Vue from 'vue'
 // import Submenu from 'element-ui/lib/submenu'
 import VeeValidate from 'vee-validate'
 import ElementUI from 'element-ui'
+import appScrollbar from './app-scrollbar'
 
 // customized
+Vue.component('app-scrollbar', appScrollbar)
 
 // general
 Vue.use(VeeValidate)
@@ -18,15 +20,18 @@ let showDialog = (template, data) => {
   return new Promise((resolve, reject) => {
     let Constructor = Vue.extend(template)
     let modal = new Constructor({
-      data () { return data || {} }
+      data() {
+        return data || {}
+      }
     })
 
     let instance = modal.$mount()
     $('body').append(instance.$el)
     instance.$promise = { resolve, reject }
     // observer
-    let observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutationRecord) => {
+    let observer = new MutationObserver(mutations => {
+      // eslint-disable-next-line no-unused-vars
+      mutations.forEach(mutationRecord => {
         if ($(instance.$el).css('display') === 'none') {
           instance.$destroy()
           $(instance.$el).remove()
@@ -38,8 +43,9 @@ let showDialog = (template, data) => {
 }
 
 let observer = (el, attr, callBack) => {
-  let observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutationRecord) => {
+  let observer = new MutationObserver(mutations => {
+    // eslint-disable-next-line no-unused-vars
+    mutations.forEach(mutationRecord => {
       callBack()
     })
   })

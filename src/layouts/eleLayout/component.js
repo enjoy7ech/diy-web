@@ -10,7 +10,7 @@ export default {
     'ele-side-bar': sideBar,
     'ele-footer': footer
   },
-  data () {
+  data() {
     return {
       isCollapse: false,
       userInfo: {
@@ -20,7 +20,7 @@ export default {
       menus: menus
     }
   },
-  mounted () {
+  mounted() {
     bus.$on('toggle', () => {
       this.isCollapse = !this.isCollapse
     })
@@ -38,12 +38,12 @@ export default {
     //   })
   },
   computed: {
-    sideWidth () {
+    sideWidth() {
       return this.isCollapse ? '65px' : '250px'
     }
   },
   methods: {
-    close () {
+    close() {
       this.showMyInfo = false
     }
   }

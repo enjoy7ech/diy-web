@@ -9,7 +9,7 @@ const spinner = ora('building for client...')
 process.env.NODE_ENV = 'production'
 
 spinner.start()
-function buildClient () {
+function buildClient() {
   return new Promise((resolve, reject) => {
     rm(config.build.assetsRoot, err => {
       if (err) throw err
@@ -18,13 +18,15 @@ function buildClient () {
           spinner.fail()
           throw err
         }
-        process.stdout.write(stats.toString({
-          colors: true,
-          modules: false,
-          children: false,
-          chunks: false,
-          chunkModules: false
-        }) + '\n\n')
+        process.stdout.write(
+          stats.toString({
+            colors: true,
+            modules: false,
+            children: false,
+            chunks: false,
+            chunkModules: false
+          }) + '\n\n'
+        )
         if (stats.hasErrors()) {
           spinner.fail()
           process.exit(1)

@@ -1,5 +1,5 @@
 import needLogin from './limits/login-limit'
 
-export default{
+export default {
   needLogin
 }

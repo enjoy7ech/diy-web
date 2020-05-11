@@ -1,16 +1,16 @@
-export default{
-  data () {
+export default {
+  data() {
     return {
       dialogVisible: false
     }
   },
   methods: {
-    handleClose (done) {
+    handleClose(done) {
       this.$confirm('确认关闭？')
-        .then(_ => {
+        .then(() => {
           done()
         })
-        .catch(_ => {})
+        .catch(() => {})
     }
   }
 }

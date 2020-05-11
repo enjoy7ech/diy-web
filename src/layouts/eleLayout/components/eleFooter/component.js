@@ -1,5 +1,5 @@
-export default{
-  data () {
+export default {
+  data() {
     return {
       imgSrc: [
         require('./images/1.jpg'),
@@ -10,7 +10,5 @@ export default{
       ]
     }
   },
-  methods: {
-
-  }
+  methods: {}
 }

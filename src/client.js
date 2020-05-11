@@ -12,8 +12,8 @@ let instance = new Vue({
   el: '#app',
   router,
   store,
-  template: '<App/>',
-  components: { App }
+  components: { App },
+  template: '<App/>'
 })
 
 if (window) {
