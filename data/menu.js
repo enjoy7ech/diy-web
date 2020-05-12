@@ -7,33 +7,18 @@ let menus = [
   {
     name: '任务管理',
     path: '/task-manage',
-    icon: 'fa fa-recycle'
+    icon: 'fa fa-tasks'
   },
   {
     name: '资产列表',
     path: '/property-list',
     icon: 'fa fa-database'
+  },
+  {
+    name: '弱口令列表',
+    path: '/week-password',
+    icon: 'fa fa-key'
   }
-  // {
-  //   name: 'UI测试',
-  //   path: 'example',
-  //   icon: 'fa fa-area-chart',
-  //   children: [
-  //     {
-  //       name: 'button',
-  //       path: '/example/button'
-  //     },
-  //     {
-  //       name: 'radio',
-  //       path: '/example/radio'
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'ajax测试',
-  //   path: '/example/request',
-  //   icon: 'fa fa-home'
-  // }
 ]
 
 export default menus

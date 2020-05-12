@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
-// const vueLoaderConfig = require('./vue-loader.config')
 
 function resolve(dir) {
   return path.join(__dirname, '../..', dir)
@@ -16,7 +15,7 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].[hash:8].js',
-    chunkFilename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.[chunkhash:8].js',
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath
   },
   resolve: {
@@ -37,8 +36,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: process.env.NODE_ENV !== 'production' ? '[name].css' : '[name].[hash].css',
-      chunkFilename: process.env.NODE_ENV !== 'production' ? '[id].css' : '[id].[hash].css'
+      filename: process.env.NODE_ENV !== 'production' ? '[name].css' : '[name].[hash].min.css',
+      chunkFilename: process.env.NODE_ENV !== 'production' ? '[id].css' : '[id].[hash].min.css'
     })
   ],
   module: {
@@ -76,6 +75,7 @@ module.exports = {
               },
               plugins: loader => [
                 require('postcss-url')(),
+                require('autoprefixer')(),
                 // require('postcss-import')(),
                 require('cssnano')(),
                 require('postcss-pxtorem')
@@ -117,18 +117,18 @@ module.exports = {
       }
     ]
   },
-  node: {
-    // prevent webpack from injecting useless setImmediate polyfill because Vue
-    // source contains it (although only uses it if it's native).
-    setImmediate: false,
-    // prevent webpack from injecting mocks to Node native modules
-    // that does not make sense for the client
-    dgram: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty'
-  },
+  // node: {
+  //   // prevent webpack from injecting useless setImmediate polyfill because Vue
+  //   // source contains it (although only uses it if it's native).
+  //   setImmediate: false,
+  //   // prevent webpack from injecting mocks to Node native modules
+  //   // that does not make sense for the client
+  //   dgram: 'empty',
+  //   fs: 'empty',
+  //   net: 'empty',
+  //   tls: 'empty',
+  //   child_process: 'empty'
+  // },
   stats: {
     colors: true,
     warnings: true

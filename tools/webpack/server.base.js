@@ -31,11 +31,11 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      '__ENV__': JSON.stringify(process.env.NODE_ENV)
+      __ENV__: JSON.stringify(process.env.NODE_ENV)
     })
   ]
 }
-function _externals () {
+function _externals() {
   let manifest = require('../../package.json')
   let dependencies = manifest.dependencies
   let externals = {}

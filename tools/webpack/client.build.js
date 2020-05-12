@@ -28,9 +28,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'auto'
     }),
     // keep module.id stable when vender modules does not change
-    new webpack.HashedModuleIdsPlugin(),
+    // new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
@@ -51,21 +51,16 @@ const webpackConfig = merge(baseWebpackConfig, {
   ],
   optimization: {
     splitChunks: {
-      chunks: 'async',
-      minSize: 30000,
-      maxSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: '~',
-      name: true,
+      minSize: 0,
       cacheGroups: {
         vendors: {
-          test: /[\\/]node_modules[\\/](jquery|element-ui|vue|lodash)[\\/]/,
+          test: /[\\/]node_modules[\\/](jquery|element-ui|vue|lodash|bootstrap)[\\/]/,
           name: 'vendor',
-          chunks: 'all',
-          priority: 1
+          reuseExistingChunk: true,
+          enforce: true,
+          chunks: 'all'
         },
+        // Create a commons chunk, which includes all code shared between entry points.
         commons: {
           minSize: 0,
           minChunks: 2,

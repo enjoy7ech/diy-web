@@ -61,7 +61,7 @@ if (__ENV__ === 'production') {
 }
 
 if (__ENV__ === 'production') {
-  app.get('/', (req, res, next) => {
+  app.get('*', (req, res, next) => {
     fs.readFile('public/index.html', 'utf8', (err, content) => {
       if (err) {
         next(err)

@@ -7,9 +7,11 @@ import Vue from 'vue'
 import VeeValidate from 'vee-validate'
 import ElementUI from 'element-ui'
 import appScrollbar from './app-scrollbar'
+import appLocalPaser from './app-local-paser'
 
 // customized
 Vue.component('app-scrollbar', appScrollbar)
+Vue.component('app-local-paser', appLocalPaser)
 
 // general
 Vue.use(VeeValidate)
@@ -27,6 +29,7 @@ let showDialog = (template, data) => {
 
     let instance = modal.$mount()
     $('body').append(instance.$el)
+    $(instance.$el).modal('show')
     instance.$promise = { resolve, reject }
     // observer
     let observer = new MutationObserver(mutations => {

@@ -2,12 +2,15 @@
 @import './lib/_margin.scss';
 @import './lib/_padding.scss';
 @import './lib/_display.scss';
+@import './lib/_font.scss';
 @import './lib/_normalize.scss';
 
 html,
 body {
   margin: 0;
   box-sizing: border-box;
+  padding: 0;
+  height: 100%;
 }
 *,
 *:before,

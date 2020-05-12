@@ -16,8 +16,6 @@ export default {
   //   }
   // },
   mounted() {
-    console.log(this.$refs.menu)
-
     this.$refs.menu.activeIndex = this.$route.path
   },
   methods: {

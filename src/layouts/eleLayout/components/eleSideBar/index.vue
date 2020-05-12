@@ -10,7 +10,7 @@
       ref="menu"
     >
       <el-menu-item :index="'title'">
-        <div class="icon-fix text-center">
+        <div class="icon-fix">
           <span class="menu-title">ClearVision</span>
         </div>
       </el-menu-item>
@@ -22,7 +22,7 @@
           :index="item.path"
           @click="selectMenu(item)"
         >
-          <div class="icon-fix text-center">
+          <div class="icon-fix">
             <i :class="item.icon" />
             <span class="margin-l-10x">{{ item.name }}</span>
           </div>
@@ -30,7 +30,7 @@
         <!-- 有子nav -->
         <el-submenu :key="index" :index="item.path" v-else>
           <template slot="title">
-            <div class="icon-fix text-center">
+            <div class="icon-fix">
               <i :class="item.icon" />
               <span class="margin-l-5x">{{ item.name }}</span>
             </div>
