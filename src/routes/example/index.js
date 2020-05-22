@@ -1,6 +1,6 @@
 import defaultLayout from '../../layouts/eleLayout'
 export default {
-  path: '/',
+  path: '/example',
   component: defaultLayout,
   meta: { pageTitle: '使用例子', pageSubTitle: '' },
   children: [
@@ -15,12 +15,6 @@ export default {
       path: 'radio',
       component: () => import('./radio'),
       meta: { pageTitle: 'radio', pageSubTitle: '' }
-    },
-    {
-      name: 'webscoket',
-      path: 'webscoket',
-      component: () => import('./webscoket'),
-      meta: { pageTitle: 'webscoket', pageSubTitle: '' }
     },
     {
       name: 'request',

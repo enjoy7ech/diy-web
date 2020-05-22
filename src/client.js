@@ -6,14 +6,15 @@ import store from './store'
 import './styles/main.scss'
 import './components'
 import 'jquery'
+import 'bootstrap/dist/js/bootstrap.bundle'
 
 /* eslint-disable no-new */
 let instance = new Vue({
   el: '#app',
   router,
   store,
-  template: '<App/>',
-  components: { App }
+  components: { App },
+  template: '<App/>'
 })
 
 if (window) {

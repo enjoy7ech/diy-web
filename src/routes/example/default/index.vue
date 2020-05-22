@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-xs-12">{{example}}</div>
+      <div class="col-xs-12">
+        {{ example }}
+      </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
@@ -28,4 +30,3 @@
   </div>
 </template>
 <script src="./component.js"></script>
-

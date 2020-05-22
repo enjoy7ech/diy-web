@@ -2,7 +2,7 @@
   <div>
     <div class="row">
       <div class="col-xs-12">
-        <div>请求结果：{{response}}</div>
+        <div>请求结果：{{ response }}</div>
       </div>
     </div>
   </div>
@@ -26,6 +26,3 @@ export default {
   }
 }
 </script>
-
-
-

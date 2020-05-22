@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="row">
+  <div style="height:2300px">
+    <div class="row margin-0x">
       <div class="col-xs-12">
         <el-button>默认按钮</el-button>
         <el-button class="fa fa-camera-retro fa-lg" type="primary">主要按钮</el-button>

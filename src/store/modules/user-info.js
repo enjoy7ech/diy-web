@@ -7,28 +7,20 @@ const state = () => {
 }
 
 const actions = {
-  setUserInfo ({ commit }, userInfo) {
+  setUserInfo({ commit }, userInfo) {
     commit('setUserInfo', userInfo)
   },
-  clearUserInfo ({ commit }) {
+  clearUserInfo({ commit }) {
     commit('clearUserInfo')
   }
 }
 
 const mutations = {
-  setUserInfo (state, payload) {
-    ({
-      uid: state.uid,
-      userName: state.userName,
-      role: state.role
-    } = payload)
+  setUserInfo(state, payload) {
+    ;({ uid: state.uid, userName: state.userName, role: state.role } = payload)
   },
-  clearUserInfo (state, payload) {
-    ({
-      uid: state.uid,
-      userName: state.userName,
-      role: state.role
-    } = {})
+  clearUserInfo(state) {
+    ;({ uid: state.uid, userName: state.userName, role: state.role } = {})
   }
 }
 

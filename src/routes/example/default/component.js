@@ -1,11 +1,10 @@
 import exampleService from '../../../service/example'
 export default {
-  data () {
+  data() {
     return { example: '' }
   },
-  mounted () {
+  mounted() {
     exampleService.test().then(data => {
-      console.log(data)
       this.example = data.name
     })
   }
