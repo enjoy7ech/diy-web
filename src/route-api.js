@@ -1,4 +1,4 @@
-import middleware from './core/security'
+let middleware = require('./core/security').default
 
 module.exports = app => {
   app.use('/apis/*', [middleware.needLogin])

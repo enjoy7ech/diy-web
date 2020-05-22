@@ -1,5 +1,4 @@
 import bus from '../../bus'
-import { loginout } from '@/service/common'
 
 export default {
   props: {
@@ -32,18 +31,6 @@ export default {
     },
     handleCommand(command) {
       command.func()
-    },
-    loginOut() {
-      loginout().then(data => {
-        if (data.code === 0) {
-          this.$notify.success('退出登录成功')
-          this.$cookies.remove('username')
-          this.$cookies.remove('token')
-          this.$router.push('/')
-        } else {
-          this.$notify.error(data.msg)
-        }
-      })
     }
   }
 }
