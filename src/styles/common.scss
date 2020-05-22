@@ -2,12 +2,15 @@
 @import './lib/_margin.scss';
 @import './lib/_padding.scss';
 @import './lib/_display.scss';
+@import './lib/_font.scss';
 @import './lib/_normalize.scss';
 
 html,
 body {
   margin: 0;
   box-sizing: border-box;
+  padding: 0;
+  height: 100%;
 }
 *,
 *:before,
@@ -15,22 +18,19 @@ body {
   box-sizing: inherit;
 }
 
-.text-center {
-  text-align: center;
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: '';
 }
-
-.text-right {
-  text-align: right;
+.clearfix:after {
+  clear: both;
 }
 
 .col-xs-label {
   padding-left: 15px;
   float: left;
   width: 85px;
-}
-
-.label-for-input {
-  line-height: 40px;
 }
 
 .title-section {
@@ -79,4 +79,18 @@ body {
       }
     }
   }
+}
+
+button {
+  &:focus {
+    outline: none !important;
+  }
+  &.btn {
+    font-size: 14px !important;
+  }
+}
+
+em {
+  color: #fa7541;
+  font-weight: 600;
 }

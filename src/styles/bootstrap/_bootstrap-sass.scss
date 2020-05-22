@@ -1,1 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
+
+// overide
+.modal-open .modal {
+  overflow-y: scroll;
+}

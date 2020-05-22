@@ -28,9 +28,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'auto'
     }),
     // keep module.id stable when vender modules does not change
-    new webpack.HashedModuleIdsPlugin(),
-    // enable scope hoisting
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new webpack.HashedModuleIdsPlugin(),
+    // // enable scope hoisting
+    // new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
@@ -46,31 +46,24 @@ const webpackConfig = merge(baseWebpackConfig, {
         from: path.join(__dirname, '../../package.json'),
         to: path.join(__dirname, '../../dist'),
         force: true
+      },
+      {
+        from: path.join(__dirname, '../../dockerfile'),
+        to: path.join(__dirname, '../../dist'),
+        force: true
       }
     ])
   ],
   optimization: {
     splitChunks: {
-      chunks: 'async',
-      minSize: 30000,
-      maxSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: '~',
-      name: true,
+      minSize: 0,
       cacheGroups: {
         vendors: {
-          test: /[\\/]node_modules[\\/](jquery|element-ui|vue|lodash)[\\/]/,
+          test: /[\\/]node_modules[\\/](jquery|element-ui|vue|lodash|bootstrap)[\\/]/,
           name: 'vendor',
-          chunks: 'all',
-          priority: 1
-        },
-        commons: {
-          minSize: 0,
-          minChunks: 2,
-          chunks: 'initial',
-          name: 'commons'
+          reuseExistingChunk: true,
+          enforce: true,
+          chunks: 'all'
         }
       }
     }

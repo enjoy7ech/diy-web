@@ -5,7 +5,7 @@ export default [
     return config
   },
   error => {
-    logger.errLog('=======Error request from broswer=======', JSON.stringify(error, null, 2))
+    logger.errLog('=======Error request from broswer=======\n', JSON.stringify(error, null, 2))
     return Promise.reject(error.response.data)
   }
 ]

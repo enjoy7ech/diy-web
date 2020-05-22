@@ -1,15 +1,17 @@
 .inline {
-  display: inline
+  display: inline !important;
 }
 
 .inline-block {
-  display: inline-block;
-}
-
-.flex {
-  display: flex
+  display: inline-block !important;
 }
 
 .block {
-  display: block;
+  display: block !important;
+}
+
+@each $ta in left, right, center {
+  .text-#{$ta} {
+    text-align: #{$ta};
+  }
 }

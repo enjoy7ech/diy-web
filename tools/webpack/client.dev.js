@@ -5,7 +5,7 @@ import baseWebpackConfig from './client.base.js'
 import copyWebpackPlugin from 'copy-webpack-plugin'
 import path from 'path'
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '../../', dir)
 }
 
@@ -22,11 +22,13 @@ export default merge(baseWebpackConfig, {
       template: './index.html',
       inject: true
     }),
-    new copyWebpackPlugin([{
-      from: resolve('/public'),
-      to: resolve('/dist/public/'),
-      force: true
-    }]),
+    new copyWebpackPlugin([
+      {
+        from: resolve('/public'),
+        to: resolve('/dist/public/'),
+        force: true
+      }
+    ]),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -38,5 +40,4 @@ export default merge(baseWebpackConfig, {
   module: {
     // rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   }
-}
-)
+})

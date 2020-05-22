@@ -10,41 +10,27 @@ export default {
     'ele-side-bar': sideBar,
     'ele-footer': footer
   },
-  data () {
+  data() {
     return {
       isCollapse: false,
-      userInfo: {
-        userName: 'admin'
-      },
       showMyInfo: false,
       menus: menus
     }
   },
-  mounted () {
-    bus.$on('toggle', () => {
-      this.isCollapse = !this.isCollapse
-    })
-    bus.$on('showMyInfo', () => {
-      $(this.$refs.sideCover).css('display', 'unset')
-      if (this.userInfo.userName) {
-        this.showMyInfo = true
-      }
-    })
-    // remoteService.loadUserState()
-    //   .then(data => {
-    //     this.userInfo = data
-    //     this.menus = menus
-    //     this.$store.commit('setUserInfo', data)
-    //   })
+  mounted() {
+    bus.$on('toggle', this.toggleMenus)
   },
   computed: {
-    sideWidth () {
+    sideWidth() {
       return this.isCollapse ? '65px' : '250px'
     }
   },
   methods: {
-    close () {
+    close() {
       this.showMyInfo = false
+    },
+    toggleMenus() {
+      this.isCollapse = !this.isCollapse
     }
   }
 }

@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+import env from '../config/env'
 
 let externals = _externals()
 
@@ -10,7 +11,8 @@ module.exports = {
   resolve: {
     extensions: ['.js']
   },
-  externals: process.argv[3] === 'all' ? [] : externals,
+  // 暂时一起打包依赖
+  // externals: process.argv[3] === 'all' ? [] : externals,
   node: {
     console: true,
     global: true,
@@ -31,11 +33,12 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      '__ENV__': JSON.stringify(process.env.NODE_ENV)
+      __ENV__: JSON.stringify(process.env.NODE_ENV),
+      __SERVER_ENV__: JSON.stringify(env)
     })
   ]
 }
-function _externals () {
+function _externals() {
   let manifest = require('../../package.json')
   let dependencies = manifest.dependencies
   let externals = {}

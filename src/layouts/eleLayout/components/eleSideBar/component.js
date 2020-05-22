@@ -5,9 +5,8 @@ export default {
     isCollapse: '',
     menus: ''
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   // watch: {
   //   menus () {
@@ -16,8 +15,11 @@ export default {
   //     this.$forceUpdate()
   //   }
   // },
+  mounted() {
+    this.$refs.menu.activeIndex = this.$route.path
+  },
   methods: {
-    selectMenu (item) {
+    selectMenu(item) {
       this.$router.push({ path: item.path })
     }
   }

@@ -1,9 +1,12 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios'
 import config from '../../config'
 import requestInterceptor from './interceptors/request/ms'
 import responseInterceptor from './interceptors/response/ms'
+import qs from 'qs'
+import _ from 'lodash'
 
-export const createMsRequest = (req, headers) => {
+export const createMsRequest = (req, options) => {
   let requestConfig = {
     baseURL: `http://${config.api}`,
     // baseURL: 'http://localhost:8888',
@@ -11,14 +14,12 @@ export const createMsRequest = (req, headers) => {
     timeout: 20000
   }
 
-  // baseHeader
-  if (req.session && req.session.userInfo && req.session.userInfo.role) {
-    requestConfig.headers.role = req.session.userInfo.role
+  if (options) {
+    _.assign(requestConfig, options)
   }
 
-  if (headers) {
-    requestConfig.headers = headers
-  }
+  //inject token
+  requestConfig.headers.authorization = `Bearer ${req.headers.authorization || ''}`
 
   requestConfig.requestContext = req.requestContext
   const client = axios.create(requestConfig)
@@ -33,11 +34,22 @@ export const createMsRequest = (req, headers) => {
 }
 
 // 这里可以给微服务的公用参数进行设置，放入headers
-// export const createDefaultMsRequest = (req, headers) => {
-//   return createMsRequest(req, headers)
-// }
+export const createDefaultMsRequest = (req, options) => {
+  options = options || {}
+  options.transformRequest = [
+    function(data) {
+      let ret = ''
+      for (let it in data) {
+        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+      }
+      ret = ret.substring(0, ret.lastIndexOf('&'))
+      return ret
+    }
+  ]
+  return createMsRequest(req, options)
+}
 
 export default {
-  createMsRequest
-  // createDefaultMsRequest
+  createMsRequest,
+  createDefaultMsRequest
 }

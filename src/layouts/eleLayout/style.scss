@@ -3,6 +3,7 @@
 
   .header-container {
     box-shadow: 0 -15px 31px #888888;
+    z-index: 999;
   }
 
   .modal-cover {
@@ -64,56 +65,4 @@
   position: fixed;
   width: 100%;
   bottom: 0;
-}
-
-.slideLeft {
-  right: 0px;
-  -webkit-animation: slideLeft;
-  animation: slideLeft 1s;
-}
-
-@-webkit-keyframes slideLeft {
-  0% {
-    right: -410px;
-  }
-
-  100% {
-    right: 0px;
-  }
-}
-
-@keyframes slideLeft {
-  0% {
-    right: -410px;
-  }
-
-  100% {
-    right: 0px;
-  }
-}
-
-.slideLeftReturn {
-  right: -410px;
-  -webkit-animation: slideLeftReturn;
-  animation: slideLeftReturn 1s;
-}
-
-@-webkit-keyframes slideLeftReturn {
-  0% {
-    right: 0px;
-  }
-
-  100% {
-    right: -410px;
-  }
-}
-
-@keyframes slideLeftReturn {
-  0% {
-    right: 0px;
-  }
-
-  100% {
-    right: -410px;
-  }
 }

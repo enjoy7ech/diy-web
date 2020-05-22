@@ -4,12 +4,16 @@ import path from 'path'
 import rm from 'rimraf'
 import ora from 'ora'
 import util from 'util'
+import env from './config/env'
+
 process.env.NODE_ENV = 'production'
 
-const spinner = ora('building for server...')
+const spinner = ora('building for ' + '\x1B[31m' + env + '\x1B[0m' + ' server...')
+
 let buildServer = async () => {
-  util.promisify(rm)(path.resolve('dist', 'server.*.js'))
-    .then((stats) => {
+  util
+    .promisify(rm)(path.resolve('dist', 'server.*.js'))
+    .then(stats => {
       return util.promisify(webpack)(webpackServerConfig)
     })
     .then((stat, err) => {

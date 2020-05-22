@@ -1,7 +1,7 @@
 import client from './build-client'
 import server from './build-server'
 
-async function build () {
+async function build() {
   await client.func()
   await server.func()
 }

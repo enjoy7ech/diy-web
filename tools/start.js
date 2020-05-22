@@ -59,7 +59,9 @@ async function start() {
         middleware: [
           require('connect-history-api-fallback')({
             verbose: false,
-            rewrites: []
+            rewrites: [
+              // { from: '/', to: '/' }
+            ]
           }),
           devMiddleware,
           hotMiddleware

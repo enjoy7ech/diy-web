@@ -1,5 +1,7 @@
 @import './common.scss';
+@import './bootstrap/bootstrap-sass';
 $fa-font-path: '~font-awesome/fonts/';
 @import '~font-awesome/scss/font-awesome';
 
+@import '~nprogress/nprogress.css';
 @import '~element-ui/lib/theme-chalk/index.css';
