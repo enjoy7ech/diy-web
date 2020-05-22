@@ -78,20 +78,8 @@ module.exports = {
             options: {
               ident: 'postcss',
               config: {
-<<<<<<< HEAD
                 path: path.join(process.cwd(), 'tools/')
               }
-=======
-                path: './tools/postcss.config.js'
-              },
-              plugins: loader => [
-                require('postcss-url')(),
-                require('autoprefixer')(),
-                // require('postcss-import')(),
-                require('cssnano')(),
-                require('postcss-pxtorem')
-              ]
->>>>>>> 09043b80a4536b19abef5998b83040717f7386e8
             }
           },
           { loader: 'sass-loader' }
