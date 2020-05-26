@@ -1,5 +1,4 @@
 import webpack from 'webpack'
-import webpackClientConfig from './webpack/client.dev'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import browserSync from 'browser-sync'
@@ -8,6 +7,7 @@ import cp from 'child_process'
 import config from './config'
 // import shell from 'shelljs'
 
+import webpackClientConfig from './webpack/client.dev'
 import webpackServerConfig from './webpack/server.dev'
 // import { resolve } from 'path'
 
@@ -41,7 +41,7 @@ async function start() {
         server.kill('SIGTERM')
       }
       server = cp.spawn('node', ['server'], {
-        cwd: config.build.assetsRoot
+        cwd: config.dev.serverRoot
       })
 
       server.stdout.on('data', onStdOut)

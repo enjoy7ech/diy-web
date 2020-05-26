@@ -10,23 +10,31 @@ process.env.NODE_ENV = 'production'
 
 const spinner = ora('building for ' + '\x1B[31m' + env + '\x1B[0m' + ' server...')
 
-let buildServer = async () => {
-  util
-    .promisify(rm)(path.resolve('dist', 'server.*.js'))
-    .then(stats => {
-      return util.promisify(webpack)(webpackServerConfig)
-    })
-    .then((stat, err) => {
-      if (stat.hasErrors()) {
-        process.exit(1)
-      } else {
-        spinner.succeed()
+let buildServer = () => {
+  spinner.start()
+  return new Promise((resolve, reject) => {
+    webpack(webpackServerConfig, (err, stats) => {
+      if (err) {
+        spinner.fail()
+        throw err
       }
+      process.stdout.write(
+        stats.toString({
+          colors: true,
+          modules: false,
+          children: false,
+          chunks: false,
+          chunkModules: false
+        }) + '\n\n'
+      )
+      if (stats.hasErrors()) {
+        spinner.fail()
+        process.exit(1)
+      }
+      spinner.succeed()
+      resolve(stats)
     })
-    .catch(err => {
-      spinner.fail()
-      throw err
-    })
+  })
 }
 
 export default {

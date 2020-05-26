@@ -14,12 +14,12 @@ function resolve(dir) {
 
 module.exports = {
   context: path.resolve('./src'),
-  output: {
-    path: config.build.assetsRoot,
-    filename: '[name].[hash:8].js',
-    chunkFilename: '[name].chunk.[contenthash:8].js',
-    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath
-  },
+  // output: {
+  //   path: config.build.assetsRoot,
+  //   filename: '[name].[hash:8].js',
+  //   chunkFilename: '[name].chunk.[contenthash:8].js',
+  //   publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath
+  // },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {

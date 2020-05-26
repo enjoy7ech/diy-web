@@ -12,6 +12,12 @@ const webpackConfig = merge(baseWebpackConfig, {
   entry: {
     app: './client.js'
   },
+  output: {
+    path: config.build.assetsRoot,
+    filename: '[name].[hash:8].js',
+    chunkFilename: '[name].chunk.[contenthash:8].js',
+    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath
+  },
   module: {},
   plugins: [
     new HtmlWebpackPlugin({
@@ -21,7 +27,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true
+        removeAttributeQuotes: false
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },

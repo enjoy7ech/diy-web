@@ -5,6 +5,8 @@ import baseWebpackConfig from './client.base.js'
 import copyWebpackPlugin from 'copy-webpack-plugin'
 import path from 'path'
 
+const config = require('../config')
+
 function resolve(dir) {
   return path.join(__dirname, '../../', dir)
 }
@@ -14,6 +16,12 @@ export default merge(baseWebpackConfig, {
   target: 'web',
   entry: {
     app: ['./client.js', 'webpack-hot-middleware/client?noInfo=true&reload=true']
+  },
+  output: {
+    path: config.dev.assetsRoot,
+    filename: '[name].[hash:8].js',
+    chunkFilename: '[name].chunk.[contenthash:8].js',
+    publicPath: config.dev.assetsPublicPath
   },
   devtool: 'inline-source-map',
   plugins: [
@@ -25,7 +33,7 @@ export default merge(baseWebpackConfig, {
     new copyWebpackPlugin([
       {
         from: resolve('/public'),
-        to: resolve('/dist/public/'),
+        to: config.dev.assetsRoot,
         force: true
       }
     ]),

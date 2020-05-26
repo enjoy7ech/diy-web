@@ -9,32 +9,29 @@ const spinner = ora('building for ' + '\x1B[31m' + env + '\x1B[0m' + ' client...
 
 process.env.NODE_ENV = 'production'
 
-spinner.start()
 function buildClient() {
+  spinner.start()
   return new Promise((resolve, reject) => {
-    rm(config.build.assetsRoot, err => {
-      if (err) throw err
-      webpack(webpackClientConfig, (err, stats) => {
-        if (err) {
-          spinner.fail()
-          throw err
-        }
-        process.stdout.write(
-          stats.toString({
-            colors: true,
-            modules: false,
-            children: false,
-            chunks: false,
-            chunkModules: false
-          }) + '\n\n'
-        )
-        if (stats.hasErrors()) {
-          spinner.fail()
-          process.exit(1)
-        }
-        spinner.succeed()
-        resolve(stats)
-      })
+    webpack(webpackClientConfig, (err, stats) => {
+      if (err) {
+        spinner.fail()
+        throw err
+      }
+      process.stdout.write(
+        stats.toString({
+          colors: true,
+          modules: false,
+          children: false,
+          chunks: false,
+          chunkModules: false
+        }) + '\n\n'
+      )
+      if (stats.hasErrors()) {
+        spinner.fail()
+        process.exit(1)
+      }
+      spinner.succeed()
+      resolve(stats)
     })
   })
 }
